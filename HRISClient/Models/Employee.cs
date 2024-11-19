@@ -6,6 +6,7 @@ namespace HRISClient.Models
     [Index("CompanyEmail", IsUnique = true)]
     public class Employee
     {
+        public int Id { get; set; }
         public int EmployeeNo { get; set; }
         public string EmployeeName { get; set; } = "";
         public string FirstName { get; set; } = "";
@@ -27,8 +28,8 @@ namespace HRISClient.Models
         public string CostCenter { get; set; } = "";
         public string EmployeeStatus { get; set; } = "";
         public string TaxStatus { get; set; } = "";
-        public decimal? BaseSalary { get; set; } 
-        public DateTime? EmplymentDate { get; set; }
+        public double BaseSalary { get; set; } 
+        public DateTime? EmploymentDate { get; set; }
         public DateTime? PermanentDate {  get; set; }
 
     } 

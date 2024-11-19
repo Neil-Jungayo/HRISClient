@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "fpoTSJyqPsJbm1xVE50JxkKVmA/HjF95PthBwS2Ttlc=",
+  "Source": "HRISClient",
+  "BasePath": "_content/HRISClient",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

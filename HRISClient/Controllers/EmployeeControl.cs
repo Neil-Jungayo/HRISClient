@@ -2,6 +2,11 @@
 using HRISClient.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Net;
+using System.Numerics;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace HRISClient.Controllers
 {
@@ -75,6 +80,54 @@ namespace HRISClient.Controllers
             };
 
             context.Employees.Add(employee);
+            context.SaveChanges();
+
+            return Ok(employee);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult EditEmployee(int id, EmployeeDto employeeDto)
+        {
+            var otherEmployee = context.Employees.FirstOrDefault(c => c.CompanyEmail == employeeDto.CompanyEmail);
+            if (otherEmployee != null)
+            {
+                ModelState.AddModelError("CompanyEmail", "The Company Email is already used");
+                var validation = new ValidationProblemDetails(ModelState);
+                return BadRequest(validation);
+            }
+
+            var employee = context.Employees.Find(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            //Update the details
+            employee.EmployeeNo = employeeDto.EmployeeNo;
+            employee.EmployeeName = employeeDto.EmployeeName;
+            employee.FirstName = employeeDto.FirstName;
+            employee.MiddleName = employeeDto.MiddleName;
+            employee.LastName = employeeDto.LastName;
+            employee.Gender = employeeDto.Gender;
+            employee.CompanyEmail = employeeDto.CompanyEmail;
+            employee.Phone = employeeDto.Phone;
+            employee.BirthPlace = employeeDto.BirthPlace;
+            employee.Address = employeeDto.Address;
+            employee.Religion = employeeDto.Religion;
+            employee.MaritalStatus = employeeDto.MaritalStatus;
+            employee.Position = employeeDto.Position;
+            employee.OrganizationUnit = employeeDto.OrganizationalUnit;
+            employee.JoinDate = employeeDto.JoinDate;
+            employee.BirthDate = employeeDto.BirthDate;
+            employee.JobStatus = employeeDto.JobStatus;
+            employee.Grade = employeeDto.Grade;
+            employee.CostCenter = employeeDto.CostCenter;
+            employee.EmployeeStatus = employeeDto.EmployeeStatus;
+            employee.TaxStatus = employeeDto.TaxStatus;
+            employee.BaseSalary = employeeDto.BaseSalary;
+            employee.EmploymentDate = employeeDto.EmploymentDate;
+            employee.PermanentDate = employeeDto.PermanentDate;
+
             context.SaveChanges();
 
             return Ok(employee);

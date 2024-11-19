@@ -18,5 +18,37 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "HRISClient.Controllers.EmployeeControl",
+    "Method": "CreateEmployee",
+    "RelativePath": "api/EmployeeControl",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeDto",
+        "Type": "HRISClient.Models.EmployeeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HRISClient.Controllers.EmployeeControl",
+    "Method": "GetEmployee",
+    "RelativePath": "api/EmployeeControl/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

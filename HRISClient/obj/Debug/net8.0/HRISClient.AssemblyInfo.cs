@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HRISClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e53fefd3695fceb45593d9bec5550d9a6350105f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffbe852ccb79f21afee7148ed1fe739f4c7d81d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("HRISClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HRISClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

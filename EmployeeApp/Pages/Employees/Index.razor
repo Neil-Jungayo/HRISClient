@@ -1,0 +1,91 @@
+﻿@page "/Employees"
+@using System.Net.Http.Json;
+
+@inject HttpClient Http
+
+<h1 class="text-center mb-3">List of Employees</h1>
+
+<a class="btn btn-primary mb-3" href="/Employees/Create">Add Employee</a>
+
+@if (employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thread>
+            <tr>
+                <th>ID</th>
+                <th>Employee Number</th>
+                <th>Employee Name</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Company Email</th>
+                <th>Phone</th>
+                <th>Birth Palce</th>
+                <th>Address</th>
+                <th>Religion</th>
+                <th>Marital Status</th>
+                <th>Position</th>
+                <th>Organization Unit</th>
+                <th>Join Date</th>
+                <th>Birth Date</th>
+                <th>Job Status</th>
+                <th>Grade</th>
+                <th>Cost Center</th>
+                <th>Employee Status</th>
+                <th>Tax Status</th>
+                <th>Base Salary</th>
+                <th>Employment Date</th>
+                <th>Permanent Date</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var employee in employees)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.EmployeeNo</td>
+                    <td>@employee.EmployeeName</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.MiddleName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.Gender</td>
+                    <td>@employee.CompanyEmail</td>
+                    <td>@employee.Phone</td>
+                    <td>@employee.BirthPlace</td>
+                    <td>@employee.Address</td>
+                    <td>@employee.Religion</td>
+                    <td>@employee.MaritalStatus</td>
+                    <td>@employee.Position</td>
+                    <td>@employee.OrganizationUnit</td>
+                    <td>@employee.JoinDate</td>
+                    <td>@employee.BirthDate</td>
+                    <td>@employee.JobStatus</td>
+                    <td>@employee.Grade</td>
+                    <td>@employee.CostCenter</td>
+                    <td>@employee.EmployeeStatus</td>
+                    <td>@employee.TaxStatus</td>
+                    <td>@employee.BaseSalary</td>
+                    <td>@employee.EmploymentDate</td>
+                    <td>@employee.PermanentDate</td>
+                    <td style="white-space:nowrap">
+                        <a class="btn btn-primary btn-sm" href="/Employees/Edit/@employee.Id">Edit</a>
+                        <a class="btn btn-primary btn-sm" href="/Employees/Delete/@employee.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Employee>? employees;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employees = await Http.GetFromJsonAsync<List<Employee>>("https://localhost:4000/api/Employees");
+    }
+}
